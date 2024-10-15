@@ -86,7 +86,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: swgp-go-*.tar.zst
-          tag: ${{ github.ref }}
+#          tag: ${{ github.ref }}
           file_glob: true
           draft: true
 #xxxxxxxxxxxxxx
