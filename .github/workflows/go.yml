@@ -24,7 +24,6 @@ jobs:
           cd ../
           rm -rf ${{ github.event.repository.name }}
           git clone --branch ${{ github.ref_name }} https://github.com/${{ github.repository }}.git
-
       - name: Build
         run: |
           mkdir package-linux-s390x \
