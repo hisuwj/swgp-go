@@ -27,8 +27,7 @@ jobs:
 
       - name: Build
         run: |
-          mkdir package-linux-s390x \
-                package-linux-mips32le \
+          mkdir package-linux-mips32le \
                 package-archlinux-x86-64-v2 \
                 package-archlinux-x86-64-v3 \
                 package-linux-x86-64-v2 \
@@ -40,7 +39,7 @@ jobs:
                 package-macos-x86-64-v3 \
                 package-macos-arm64 \ 
           
-          env CGO_ENABLED=0 GOARCH=s390x go build -v -trimpath -ldflags '-s -w' -o package-linux-s390x/ ./cmd/swgp-go
+          
           env CGO_ENABLED=0 GOARCH=mipsle GOMIPS=softfloat go build -v -trimpath -ldflags '-s -w' -o package-linux-mips32le/ ./cmd/swgp-go
           env GOAMD64=v2 go build -v -trimpath -ldflags '-s -w' -o package-archlinux-x86-64-v2/ ./cmd/swgp-go
           env GOAMD64=v3 go build -v -trimpath -ldflags '-s -w' -o package-archlinux-x86-64-v3/ ./cmd/swgp-go
@@ -58,8 +57,7 @@ jobs:
           ZSTD_CLEVEL: 19
           ZSTD_NBTHREADS: 2
         run: |
-          cd ../package-linux-s390x/
-          tar -acf ../swgp-go-${{ github.ref_name }}-linux-s390x.tar.zst .
+          
           cd ../package-linux-mips32le/
           tar -acf ../swgp-go-${{ github.ref_name }}-linux-mips32le.tar.zst .
           cd package-archlinux-x86-64-v2/
